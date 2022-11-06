@@ -3,7 +3,7 @@
 # http://picamera.readthedocs.io/en/latest/recipes2.html#web-streaming
 # Test
 
-import codecs
+
 import io
 import picamera
 import logging
@@ -11,11 +11,12 @@ import socketserver
 from tendo import singleton
 from threading import Condition
 from http import server
-file = codecs.open("index.html", "r", "utf-8")
 
 me = singleton.SingleInstance()
 
-PAGE=file
+with open("index.html", "r") as file:
+    PAGE = file.read()
+
 
 class StreamingOutput(object):
     def __init__(self):
@@ -41,7 +42,7 @@ class StreamingHandler(server.BaseHTTPRequestHandler):
             self.send_header('Location', '/index.html')
             self.end_headers()
         elif self.path == '/index.html':
-            content = PAGE
+            content = PAGE.encode('utf-8')
             self.send_response(200)
             self.send_header('Content-Type', 'text/html')
             self.send_header('Content-Length', len(content))
