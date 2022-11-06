@@ -101,7 +101,7 @@ class StreamingHandler(server.BaseHTTPRequestHandler):
                         bitOutput.condition.wait()
                         with open("soundbit.js", "r") as file:
                             BIT = file.read()
-                        bit = BIT
+                            bit = BIT
                     self.wfile.write(b'--FRAME\r\n')
                     self.send_header('Content-Type', 'script')
                     self.send_header('Content-Length', len(bit))
