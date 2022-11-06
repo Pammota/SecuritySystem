@@ -99,7 +99,7 @@ class StreamingHandler(server.BaseHTTPRequestHandler):
                 while True:
                     with bitOutput.condition:
                         bitOutput.condition.wait()
-                        with open("soundbit.txt", "r") as file:
+                        with open("soundbit.js", "r") as file:
                             BIT = file.read()
                         bit = BIT
                     self.wfile.write(b'--FRAME\r\n')
