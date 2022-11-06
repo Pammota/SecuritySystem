@@ -1,0 +1,23 @@
+#!/bin/bash
+
+usage ()
+{
+  echo 'Usage: gitmail -m <e-mail>'
+  exit
+}
+
+[ "$#" -ne 2 ] && usage
+
+while getopts m: flag
+do
+    case ${flag} in
+        m) mail=${OPTARG};;
+    esac
+done
+
+re1='^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}'
+if ! [[ $mail =~ $re1 ]] ; then
+   echo "error: m is not an e-mail" >&2; exit 1
+fi
+
+git config user.email $mail
