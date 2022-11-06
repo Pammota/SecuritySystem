@@ -29,16 +29,16 @@ def camera(man):
         encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), 65]
         man[0] = cv2.imencode('.jpg', f, encode_param)[1]
 
-def alarm(man):
-    log("Starting alarm")
-    with open("soundbit.txt", "r") as file:
-        soundbit = file.read()
+# def alarm(man):
+#     log("Starting alarm")
+#     with open("soundbit.txt", "r") as file:
+#         soundbit = file.read()
 
-    while file:
-        with open("soundbit.txt", "r") as file:
-            soundbit = file.read()
-            encode_param = [int(soundbit), 1]
-            man[0] = encode_param[1]
+#     while file:
+#         with open("soundbit.txt", "r") as file:
+#             soundbit = file.read()
+#             encode_param = [int(soundbit), 1]
+#             man[0] = encode_param[1]
         
 # HTTP server handler
 def server():
@@ -84,10 +84,10 @@ def main():
     # Set up our camera
     camera_handler = multiprocessing.Process(target=camera, args=(lst,))
 
-    alarm_handler = multiprocessing.Process(target=alarm, args=(lst,))
+    # alarm_handler = multiprocessing.Process(target=alarm, args=(lst,))
     # Add 'em to our list
     PROCESSES.append(camera_handler)
-    PROCESSES.append(alarm_handler)
+    # PROCESSES.append(alarm_handler)
     PROCESSES.append(http_server)
     PROCESSES.append(socket_handler)
     for p in PROCESSES:
