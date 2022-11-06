@@ -1,0 +1,20 @@
+#!/bin/bash
+
+usage ()
+{
+  echo 'Usage: superpush -m <message>'
+  exit
+}
+
+[ "$#" -ne 2 ] && usage
+
+while getopts m: flag
+do
+    case ${flag} in
+        m) message=${OPTARG};;
+    esac
+done
+
+git add .
+git commit -m "$message"
+git push
