@@ -29,7 +29,7 @@ def camera(man):
         encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), 65]
         man[0] = cv2.imencode('.jpg', f, encode_param)[1]
 
-def alarm():
+def alarm(man):
     log("Starting alarm")
     with open("soundbit.txt", "r") as file:
         soundbit = file.read()
@@ -37,6 +37,7 @@ def alarm():
     while file:
         soundbit = file.read()
         encode_param = [int(soundbit), 1]
+        man[0] = encode_param[1]
         
 # HTTP server handler
 def server():
