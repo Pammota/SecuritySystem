@@ -23,6 +23,7 @@ with open("style.css", "r") as file:
 with open("script.js", "r") as file:
     SCRIPT = file.read()
 
+
 class StreamingOutput(object):
     def __init__(self):
         self.frame = None
@@ -36,6 +37,24 @@ class StreamingOutput(object):
             self.buffer.truncate()
             with self.condition:
                 self.frame = self.buffer.getvalue()
+                self.condition.notify_all()
+            self.buffer.seek(0)
+        return self.buffer.write(buf)
+
+
+class BitOutput(object):
+    def __init__(self):
+        self.bit = b'0'
+        self.buffer = io.BytesIO()
+        self.condition = Condition()
+
+    def write(self, buf):
+        if buf.startswith(b'0'):
+            # New frame, copy the existing buffer's content and notify all
+            # clients it's available
+            self.buffer.truncate()
+            with self.condition:
+                self.bit = self.buffer.getvalue()
                 self.condition.notify_all()
             self.buffer.seek(0)
         return self.buffer.write(buf)
@@ -68,13 +87,6 @@ class StreamingHandler(server.BaseHTTPRequestHandler):
             self.send_header('Content-Length', len(content))
             self.end_headers()
             self.wfile.write(content)
-        elif self.path == '/soundbit.txt':
-            content = '''test'''.encode('utf-8')
-            self.send_response(200)
-            self.send_header('Content-Type', 'text/html')
-            self.send_header('Content-Length', len(content))
-            self.end_headers()
-            self.wfile.write(content)
         elif self.path == '/stream.mjpg':
             self.send_response(200)
             self.send_header('Age', 0)
@@ -98,6 +110,29 @@ class StreamingHandler(server.BaseHTTPRequestHandler):
                 logging.warning(
                     'Removed streaming client %s: %s',
                     self.client_address, str(e))
+        elif self.path == '/soundbit.txt':
+            self.send_response(200)
+            self.send_header('Age', 0)
+            self.send_header('Cache-Control', 'no-cache, private')
+            self.send_header('Pragma', 'no-cache')
+            self.send_header(
+                'Content-Type', 'multipart/x-mixed-replace; boundary=FRAME')
+            self.end_headers()
+            try:
+                while True:
+                    with bitOutput.condition:
+                        bitOutput.condition.wait()
+                        with open("soundbit.txt", "r") as file:
+                            BIT = file.read()
+                        bit = BIT
+                    self.send_header('Content-Type', 'text')
+                    self.send_header('Content-Length', len(bit))
+                    self.end_headers()
+                    self.wfile.write(bit)
+            except Exception as e:
+                logging.warning(
+                    'Removed streaming client %s: %s',
+                    self.client_address, str(e))
         else:
             self.send_error(404)
             self.end_headers()
@@ -110,6 +145,7 @@ class StreamingServer(socketserver.ThreadingMixIn, server.HTTPServer):
 
 with picamera.PiCamera(resolution='640x480', framerate=24) as camera:
     output = StreamingOutput()
+    bitOutput = BitOutput()
     # Uncomment the next line to change your Pi's Camera rotation (in degrees)
     camera.rotation = 90
     camera.start_recording(output, format='mjpeg')
