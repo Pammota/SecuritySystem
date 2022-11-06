@@ -1,4 +1,4 @@
 #!/bin/bash
 
 git pull
-start
+python3 rpi_cam_script.py
