@@ -20,6 +20,8 @@ with open("index.html", "r") as file:
 with open("style.css", "r") as file:
     STYLES = file.read()
 
+with open("script.js", "r") as file:
+    SCRIPT = file.read()
 
 class StreamingOutput(object):
     def __init__(self):
@@ -56,6 +58,13 @@ class StreamingHandler(server.BaseHTTPRequestHandler):
             content = STYLES.encode('utf-8')
             self.send_response(200)
             self.send_header('Content-Type', 'text/css')
+            self.send_header('Content-Length', len(content))
+            self.end_headers()
+            self.wfile.write(content)
+        elif self.path == '/script.js':
+            content = SCRIPT.encode('utf-8')
+            self.send_response(200)
+            self.send_header('Content-Type', 'text/js')
             self.send_header('Content-Length', len(content))
             self.end_headers()
             self.wfile.write(content)
