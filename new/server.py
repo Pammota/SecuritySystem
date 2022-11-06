@@ -35,9 +35,10 @@ def alarm(man):
         soundbit = file.read()
 
     while file:
-        soundbit = file.read()
-        encode_param = [int(soundbit), 1]
-        man[0] = encode_param[1]
+        with open("soundbit.txt", "r") as file:
+            soundbit = file.read()
+            encode_param = [int(soundbit), 1]
+            man[0] = encode_param[1]
         
 # HTTP server handler
 def server():
