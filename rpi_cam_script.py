@@ -102,10 +102,12 @@ class StreamingHandler(server.BaseHTTPRequestHandler):
                         with open("soundbit.txt", "r") as file:
                             BIT = file.read()
                         bit = BIT
+                    self.wfile.write(b'--FRAME\r\n')
                     self.send_header('Content-Type', 'script')
                     self.send_header('Content-Length', len(bit))
                     self.end_headers()
                     self.wfile.write(bit)
+                    self.wfile.write(b'\r\n')
             except Exception as e:
                 logging.warning(
                     'Removed streaming client %s: %s',
