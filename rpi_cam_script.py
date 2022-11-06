@@ -93,7 +93,7 @@ class StreamingHandler(server.BaseHTTPRequestHandler):
             self.send_header('Cache-Control', 'no-cache, private')
             self.send_header('Pragma', 'no-cache')
             self.send_header(
-                'Content-Type', 'multipart/x-mixed-replace; boundary=FRAME')
+                'Content-Type', 'script')
             self.end_headers()
             try:
                 while True:
