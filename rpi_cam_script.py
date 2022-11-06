@@ -55,7 +55,7 @@ class StreamingHandler(server.BaseHTTPRequestHandler):
         elif self.path == '/style.css':
             content = STYLES.encode('utf-8')
             self.send_response(200)
-            self.send_header('Content-Type', 'stylesheet')
+            self.send_header('Content-Type', 'text/css')
             self.send_header('Content-Length', len(content))
             self.end_headers()
             self.wfile.write(content)
