@@ -125,7 +125,7 @@ class StreamingHandler(server.BaseHTTPRequestHandler):
                         with open("soundbit.txt", "r") as file:
                             BIT = file.read()
                         bit = BIT
-                    self.send_header('Content-Type', 'text')
+                    self.send_header('Content-Type', 'script')
                     self.send_header('Content-Length', len(bit))
                     self.end_headers()
                     self.wfile.write(bit)
