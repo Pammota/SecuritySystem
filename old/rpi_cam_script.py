@@ -66,6 +66,7 @@ class StreamingHandler(server.BaseHTTPRequestHandler):
             self.send_response(301)
             self.send_header('Location', '/index.html')
             self.end_headers()
+
         elif self.path == '/index.html':
             content = PAGE.encode('utf-8')
             self.send_response(200)
@@ -73,6 +74,7 @@ class StreamingHandler(server.BaseHTTPRequestHandler):
             self.send_header('Content-Length', len(content))
             self.end_headers()
             self.wfile.write(content)
+
         elif self.path == '/style.css':
             content = STYLES.encode('utf-8')
             self.send_response(200)
@@ -80,6 +82,7 @@ class StreamingHandler(server.BaseHTTPRequestHandler):
             self.send_header('Content-Length', len(content))
             self.end_headers()
             self.wfile.write(content)
+
         elif self.path == '/script.js':
             content = SCRIPT.encode('utf-8')
             self.send_response(200)
@@ -87,7 +90,8 @@ class StreamingHandler(server.BaseHTTPRequestHandler):
             self.send_header('Content-Length', len(content))
             self.end_headers()
             self.wfile.write(content)
-        elif self.path == '/soundbit.js':
+
+        elif self.path == '/soundbit.js': # does not work
             self.send_response(200)
             self.send_header('Age', 0)
             self.send_header('Cache-Control', 'no-cache, private')
@@ -112,6 +116,7 @@ class StreamingHandler(server.BaseHTTPRequestHandler):
                 logging.warning(
                     'Removed streaming client %s: %s',
                     self.client_address, str(e))
+					
         elif self.path == '/stream.mjpg':
             self.send_response(200)
             self.send_header('Age', 0)
