@@ -15,9 +15,4 @@ do
     esac
 done
 
-re1='^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}'
-if ! [[ $mail =~ $re1 ]] ; then
-   echo "error: m is not an e-mail" >&2; exit 1
-fi
-
 git config user.email $mail
