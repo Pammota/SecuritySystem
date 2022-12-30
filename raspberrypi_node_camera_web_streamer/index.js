@@ -25,9 +25,9 @@ videoStream.acceptConnections(
   {
     width: 3280 ,
     height: 2464,
-    fps: 26,
+    fps: 15,
     encoding: "JPEG",
-    quality: 80, // lower is faster, less quality
+    quality: 20, // lower is faster, less quality
   },
   "/stream.mjpg",
   true
