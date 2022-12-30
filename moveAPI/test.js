@@ -1,7 +1,7 @@
 const Gpio = require("onoff").Gpio;
 const LED1 = new Gpio(2, "out");
 
-const pir = new Gpio(21, "in", "both");
+const pir = new Gpio(40, "in", "both");
 
 let activating = 0;
 
