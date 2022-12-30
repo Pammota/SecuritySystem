@@ -50,14 +50,14 @@ body {
   padding: 0;
 }
 
-img {
+.img-hold {
   background-color: #c49e35;
   padding: 10px 10px;
   box-shadow: rgba(0, 0, 0, 0.7) 0px 5px 15px;
   transition: all 3s;
 }
 
-img:hover {
+.img-hold:hover {
   width: 960px;
   height: 720px;
   box-shadow: rgba(0, 0, 0, 0.95) 0px 10px 20px;
