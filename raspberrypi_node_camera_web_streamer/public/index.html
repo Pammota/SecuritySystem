@@ -1,8 +1,23 @@
-<html>
-<head>
-<title>Raspberry Pi - Camera Stream</title>
-</head>
-<body style="position: fixed; top: 0px; left: 0px; right: 0px; bottom: 0px; background: #111;">
-<img src="stream.mjpg" style="position: fixed; top: 0px; left: 0px; right: 0px; height: 100%; width: calc(100% + 2px); object-fit: contain;">
-</body>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <title>Security Camera</title>
+    <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/2549/2549910.png">
+  </head>
+  <body>
+    <div class="container">
+      <div class="cont2">
+        <h1 id="titleofsite">Bird Camera</h1>
+        <img src="stream.mjpg" style="position: fixed; top: 0px; left: 0px; right: 0px; height: 100%; width: calc(100% + 2px); object-fit: contain;">
+        
+        <button id="buttonpress">PRESS ME</button>
+      </div>
+    </div>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="./script.js"></script>
 </html>
