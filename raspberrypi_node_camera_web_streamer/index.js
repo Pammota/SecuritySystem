@@ -23,7 +23,7 @@ const videoStream = require("./videoStream");
 videoStream.acceptConnections(
   app,
   {
-    width: 1500 ,
+    width: 1500,
     height: 1500,
     fps: 25,
     encoding: "JPEG",
@@ -33,16 +33,21 @@ videoStream.acceptConnections(
   true
 );
 
-app.get('/api/true-or-false', (req, res) => {
+app.get("/api/true-or-false", (req, res) => {
+  // If the random number is less than 0.5, send a response with a value of "true"
+  if (isMoving) {
+    res.send({ value: true });
+  } else {
+    // Otherwise, send a response with a value of "false"
+    res.send({ value: false });
+  }
+});
 
-    // If the random number is less than 0.5, send a response with a value of "true"
-    if ( isMoving ) {
-      res.send({ value: true });
-    } else {
-      // Otherwise, send a response with a value of "false"
-      res.send({ value: false });
-    }
-  });
+app.get("/api/temp", (req, res) => {
+  const temp = fs.readFileSync("/sys/class/thermal/thermal_zone0/temp");
+  const temp_c = temp / 1000;
+  res.send({ temperature: temp_c });
+});
 
 app.use(express.static(__dirname + "/public"));
 app.listen(port, () =>
