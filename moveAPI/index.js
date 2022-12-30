@@ -1,12 +1,25 @@
 const express = require('express');
 const app = express();
 
+const Gpio = require("onoff").Gpio;
+
+const pir = new Gpio(21, "in", "both");
+
+let activating = 0;
+let isMoving = 0;
+
+pir.watch(function(err, value) {
+  if (err) exit();
+  //let blinkInterval = setInterval(blinkLED, 250);
+
+  console.log(`Intruder nr. ${activating++} detected, value ${value}`);
+  isMoving = value;
+});
+
 app.get('/api/true-or-false', (req, res) => {
-  // Generate a random number between 0 and 1
-  const randomNumber = Math.random();
 
   // If the random number is less than 0.5, send a response with a value of "true"
-  if (randomNumber < 0.5) {
+  if ( isMoving ) {
     res.send({ value: true });
   } else {
     // Otherwise, send a response with a value of "false"
