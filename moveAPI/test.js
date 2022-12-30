@@ -5,7 +5,7 @@ const pir = new Gpio(21, "in", "both");
 
 pir.watch(function(err, value) {
   if (err) exit();
-  let blinkInterval = setInterval(blinkLED, 250);
+  //let blinkInterval = setInterval(blinkLED, 250);
 
   console.log("Intruder detected");
   console.log("Pi Bot deployed successfully!");
