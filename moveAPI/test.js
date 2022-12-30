@@ -1,6 +1,5 @@
 const Gpio = require("onoff").Gpio;
 const LED1 = new Gpio(2, "out");
-let state = 2;
 
 const pir = new Gpio(21, "in", "both");
 
@@ -12,7 +11,7 @@ pir.watch(function(err, value) {
   console.log("Pi Bot deployed successfully!");
   console.log("Guarding the raspberry pi 3...");
 
-  setTimeout(endBlink, 15000);
+  setTimeout(endBlink, 2000);
 
   function endBlink() {
 
