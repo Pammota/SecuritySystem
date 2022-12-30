@@ -19,5 +19,5 @@ const sensor = (err, value) => {
 
 
 while (true) {
-  setTimeout(pir.watch(sensor),200);
+  setTimeout(()=> pir.watch(sensor),200);
 }
