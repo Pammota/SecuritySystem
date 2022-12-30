@@ -16,8 +16,8 @@ pir.watch(function(err, value) {
   function endBlink() {
 
     //included when we are working with sensors
-    pir.unexport();
-    process.exit();
+    //pir.unexport();
+    //process.exit();
   }
 });
 
