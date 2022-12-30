@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const videoStream = require('raspberrypi-node-camera-web-streamer');
+
 videoStream.acceptConnections(app, {
     width: 1280,
     height: 720,
