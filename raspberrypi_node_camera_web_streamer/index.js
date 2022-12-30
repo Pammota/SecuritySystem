@@ -25,9 +25,9 @@ videoStream.acceptConnections(
   {
     width: 3280 ,
     height: 2464,
-    fps: 15,
+    fps: 30,
     encoding: "JPEG",
-    quality: 7, // lower is faster, less quality
+    quality: 30, // lower is faster, less quality
   },
   "/stream.mjpg",
   true
@@ -47,6 +47,6 @@ app.get('/api/true-or-false', (req, res) => {
 app.use(express.static(__dirname + "/public"));
 app.listen(port, () =>
   console.log(
-    `Example app listening on port ${port}! In your web browser, navigate to http://<IP_ADDRESS_OF_THIS_SERVER>:3000`
+    `Example app listening on port ${port}! In your web browser, navigate to http://localhost:3000`
   )
 );
