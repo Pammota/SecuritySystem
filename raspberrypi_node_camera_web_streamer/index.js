@@ -23,11 +23,11 @@ const videoStream = require("./videoStream");
 videoStream.acceptConnections(
   app,
   {
-    width: 720,
-    height: 1280,
-    fps: 16,
+    width: 900,
+    height: 1400,
+    fps: 30,
     encoding: "JPEG",
-    quality: 7, // lower is faster, less quality
+    quality: 10, // lower is faster, less quality
   },
   "/stream.mjpg",
   true
