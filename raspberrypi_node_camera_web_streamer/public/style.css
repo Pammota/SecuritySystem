@@ -16,7 +16,7 @@ h1 {
 }
 .container {
   z-index: 1;
-  position: relative;
+  /* position: relative; */
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -68,7 +68,7 @@ h1:hover {
 }
 
 .feed {
-  position: fixed;
+  /* position: fixed; */
   top: 0px;
   left: 0px;
   right: 0px;
