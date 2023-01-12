@@ -23,11 +23,17 @@ h1 {
   justify-content: center;
   min-height: 35rem;
   background-image: linear-gradient(
-      to bottom,
-      rgba(255, 168, 76, 0.6) 0%,
-      rgba(255, 123, 13, 0.6) 100%
-    ),
-    url("https://images.unsplash.com/photo-1446824505046-e43605ffb17f");
+    to bottom,
+    rgba(76, 255, 180, 0.6) 0%,
+    rgba(13, 227, 255, 0.6) 100%
+  );
+  background: rgb(18, 215, 228);
+  background: linear-gradient(
+    90deg,
+    rgba(18, 215, 228, 1) 0%,
+    rgba(43, 43, 199, 1) 50%,
+    rgba(0, 212, 255, 1) 100%
+  );
   background-blend-mode: soft-light;
   background-size: cover;
   background-position: center center;
@@ -51,15 +57,15 @@ body {
 }
 
 .img-hold {
-  background-color: #c49e35;
+  background-color: #3abbd5;
   padding: 10px 10px;
   box-shadow: rgba(0, 0, 0, 0.7) 0px 5px 15px;
   transition: all 3s;
 }
 
 .img-hold:hover {
-  width: 960px;
-  height: 720px;
+  /* width: 960px; */
+  /* height: 720px; */
   box-shadow: rgba(0, 0, 0, 0.95) 0px 10px 20px;
 }
 
