@@ -79,7 +79,7 @@ h1:hover {
   left: 0px;
   right: 0px;
   height: 100%;
-  width: calc(100% + 2px);
+  width: calc(50% + 2px);
   object-fit: contain;
   transform: rotate(90deg);
 }
