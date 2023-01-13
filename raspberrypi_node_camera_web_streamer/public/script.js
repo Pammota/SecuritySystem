@@ -35,19 +35,27 @@ const alertSound = async () => {
 // };
 
 const myPeriodicMethod = () => {
+  console.log("before-----");
+  console.log("data.value:", data.value);
+  console.log("lastAlertStat:", lastAlertStat);
   $.ajax({
     url: "http://codepi.local:3000/api/true-or-false",
     success: (data) => {
       if (data.value) {
         if (!lastAlertStat) {
+          console.log("true------");
           lastAlertStat = true;
           alertSound();
           console.log("data.value:", data.value);
           console.log("lastAlertStat:", lastAlertStat);
-        } else
+        } else {
           lastAlertStat = false;
+          console.log("false-------");
+          console.log("data.value:", data.value);
+          console.log("lastAlertStat:", lastAlertStat);
+        }
       }
-      console.log(data.value);
+      // console.log(data.value);
     },
     complete: () => {
       // schedule the next request *only* when the current one is complete:
