@@ -76,25 +76,26 @@ const takeSnap = () => {
   const photoSrc = document.getElementById("liveFeed");
 
   console.log("take snap----");
-  console.log("tag",photoSrc);
-  console.log("src",photoSrc.src);
+  console.log("tag", photoSrc);
+  console.log("src", photoSrc.src);
 
   fetch(photoSrc.src)
     .then((res) => {
-      console.log("res, res.blob",res, res.blob());
+      console.log("res, res.blob", res, res.blob());
       return res.blob();
     })
     .then((blob) => {
       console.log("blob 2", blob);
       const file = new File([blob], `${photoIndex}-img.png`, blob);
-      console.log("file",file);
+      console.log("file", file);
       localStorage.setItem(`img-${photoIndex}`, file);
+    })
+    .then(() => {
+      const recentUrl = localStorage.getItem(`img-${photoIndex}`);
+      console.log("recent url", recentUrl);
+
+      $("#imglist").prepend(`<img src="${recentUrl}" />`);
+
+      photoIndex++;
     });
-
-  const recentUrl = localStorage.getItem(`img-${photoIndex}`);
-  console.log("recent url", recentUrl);
-
-  $("#imglist").prepend(`<img src="${recentUrl}" />`);
-
-  photoIndex++;
 };
