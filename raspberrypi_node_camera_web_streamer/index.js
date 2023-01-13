@@ -43,6 +43,12 @@ app.get("/api/true-or-false", (req, res) => {
   }
 });
 
+app.get("/api/absVal", (req, res) => {
+  // If the random number is less than 0.5, send a response with a value of "true"
+    val = pir.readSync();
+    res.send({ value: val });
+});
+
 app.get("/api/temp", (req, res) => {
   const temp = fs.readFileSync("/sys/class/thermal/thermal_zone0/temp");
   const temp_c = temp / 1000;
