@@ -85,7 +85,7 @@ const takeSnap = () => {
       return res.blob();
     })
     .then((blob) => {
-      console.log("blob 2", blob);
+      // console.log("blob 2", blob);
       const file = new File([blob], `${photoIndex}-img.png`, blob);
       console.log("file", file);
       localStorage.setItem(`img-${photoIndex}`, file);
