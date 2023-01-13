@@ -8,7 +8,7 @@ const play = () => {
   const audio = new Audio(
     "https://assets.mixkit.co/sfx/preview/mixkit-elevator-tone-2863.mp3"
   );
-  audio.muted = true;
+  // audio.muted = true;
   audio.play();
 };
 
@@ -59,7 +59,7 @@ const myPeriodicMethod = () => {
     },
     complete: () => {
       // schedule the next request *only* when the current one is complete:
-      setTimeout(myPeriodicMethod, 500);
+      setTimeout(myPeriodicMethod, 2000);
     },
   });
 };
