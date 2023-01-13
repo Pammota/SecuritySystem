@@ -3,6 +3,7 @@ function delay(time) {
 }
 
 let lastAlertStat = false;
+let photoIndex = 0;
 
 const play = () => {
   const audio = new Audio(
@@ -46,6 +47,7 @@ const myPeriodicMethod = () => {
           console.log("true------");
           lastAlertStat = true;
           alertSound();
+
           console.log("data.value:", data.value);
           console.log("lastAlertStat:", lastAlertStat);
         } else {
@@ -65,3 +67,20 @@ const myPeriodicMethod = () => {
 };
 
 myPeriodicMethod();
+
+// -------
+
+const takeSnap = () => {
+  const photoSrc = $("#liveFeed").attr("src");
+
+  fetch(img.src)
+    .then((res) => res.blob())
+    .then((blob) => {
+      const file = new File([blob], `${photoIndex}-img.png`, blob);
+      localStorage.setItem(`img-${photoIndex}`, file);
+    });
+
+  const recentUrl = localStorage.getItem(`img-${photoIndex}`);
+
+  $("#imglist").prepend(`<img src="${recentUrl}" />`);
+};
