@@ -71,12 +71,14 @@ myPeriodicMethod();
 // -------
 
 const takeSnap = () => {
-  const photoSrc = $("#liveFeed").attr("src");
+  const photoSrc = $("#liveFeed");
 
+  console.log("take snap----");
   console.log(photoSrc);
+  console.log(photoSrc.src);
 
-  fetch(photoSrc)
-    .then((res) => res.blob())
+  fetch(photoSrc.src)
+    .then((res) => {console.log(res, res.blob()) ; return res.blob()})
     .then((blob) => {
       const file = new File([blob], `${photoIndex}-img.png`, blob);
       localStorage.setItem(`img-${photoIndex}`, file);
