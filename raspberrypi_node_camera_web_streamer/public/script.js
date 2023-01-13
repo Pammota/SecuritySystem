@@ -81,7 +81,7 @@ const takeSnap = () => {
 
   fetch(photoSrc.src)
     .then((res) => {
-      console.log("res, res.blob", res, res.blob());
+      // console.log("res, res.blob", res, res.blob());
       return res.blob();
     })
     .then((blob) => {
