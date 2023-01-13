@@ -73,7 +73,7 @@ myPeriodicMethod();
 const takeSnap = () => {
   const photoSrc = $("#liveFeed").attr("src");
 
-  fetch(img.src)
+  fetch(photoSrc)
     .then((res) => res.blob())
     .then((blob) => {
       const file = new File([blob], `${photoIndex}-img.png`, blob);
