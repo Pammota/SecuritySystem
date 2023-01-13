@@ -34,18 +34,16 @@ videoStream.acceptConnections(
 );
 
 app.get("/api/true-or-false", (req, res) => {
-  // If the random number is less than 0.5, send a response with a value of "true"
   if (isMoving) {
     res.send({ value: true });
   } else {
-    // Otherwise, send a response with a value of "false"
     res.send({ value: false });
   }
 });
 
 app.get("/api/absVal", (req, res) => {
-  // If the random number is less than 0.5, send a response with a value of "true"
     val = pir.readSync();
+    console.log(val);
     res.send({ value: val });
 });
 
