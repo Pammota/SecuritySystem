@@ -59,7 +59,7 @@ const myPeriodicMethod = () => {
     },
     complete: () => {
       // schedule the next request *only* when the current one is complete:
-      setTimeout(myPeriodicMethod, 2000);
+      setTimeout(myPeriodicMethod, 5000);
     },
   });
 };
