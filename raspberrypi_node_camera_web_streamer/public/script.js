@@ -42,6 +42,8 @@ const myPeriodicMethod = () => {
         if (!lastAlertStat) {
           lastAlertStat = true;
           alertSound();
+          console.log("data.value:", data.value);
+          console.log("lastAlertStat:", lastAlertStat);
         } else
           lastAlertStat = false;
       }
