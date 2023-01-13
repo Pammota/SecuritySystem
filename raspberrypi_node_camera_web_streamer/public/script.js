@@ -80,10 +80,7 @@ const takeSnap = () => {
   console.log("src", photoSrc.src);
 
   fetch(photoSrc.src)
-    .then((res) => {
-      // console.log("res, res.blob", res, res.blob());
-      return res.blob();
-    })
+    .then((res) => (res.blob()))
     .then((blob) => {
       // console.log("blob 2", blob);
       const file = new File([blob], `${photoIndex}-img.png`, blob);
