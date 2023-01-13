@@ -83,10 +83,12 @@ const takeSnap = () => {
     .then((res) => {console.log(res, res.blob()) ; return res.blob()})
     .then((blob) => {
       const file = new File([blob], `${photoIndex}-img.png`, blob);
+      console.log(file);
       localStorage.setItem(`img-${photoIndex}`, file);
     });
 
   const recentUrl = localStorage.getItem(`img-${photoIndex}`);
+  console.log(recentUrl);
 
   $("#imglist").prepend(`<img src="${recentUrl}" />`);
 
