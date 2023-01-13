@@ -30,7 +30,7 @@ videoStream.acceptConnections(
     quality: 7, // lower is faster, less quality
   },
   "/stream.mjpg",
-  true
+  false
 );
 
 app.get("/api/true-or-false", (req, res) => {
