@@ -89,6 +89,7 @@ const takeSnap = () => {
       const file = new File([blob], `${photoIndex}-img.png`, blob);
       console.log("file", file);
       localStorage.setItem(`img-${photoIndex}`, file);
+      console.log("sui?");
     })
     .then(() => {
       const recentUrl = localStorage.getItem(`img-${photoIndex}`);
