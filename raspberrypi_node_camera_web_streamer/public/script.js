@@ -73,6 +73,8 @@ myPeriodicMethod();
 const takeSnap = () => {
   const photoSrc = $("#liveFeed").attr("src");
 
+  console.log(photoSrc);
+
   fetch(photoSrc)
     .then((res) => res.blob())
     .then((blob) => {
@@ -83,4 +85,6 @@ const takeSnap = () => {
   const recentUrl = localStorage.getItem(`img-${photoIndex}`);
 
   $("#imglist").prepend(`<img src="${recentUrl}" />`);
+
+  photoIndex++;
 };
