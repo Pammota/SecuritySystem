@@ -36,7 +36,7 @@ const alertSound = async () => {
 
 const myPeriodicMethod = () => {
   console.log("before-----");
-  console.log("data.value:", data.value);
+  // console.log("data.value:", data.value);
   console.log("lastAlertStat:", lastAlertStat);
   $.ajax({
     url: "http://codepi.local:3000/api/true-or-false",
