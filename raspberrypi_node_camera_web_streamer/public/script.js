@@ -71,7 +71,9 @@ myPeriodicMethod();
 // -------
 
 const takeSnap = () => {
-  const photoSrc = $("#liveFeed");
+  // const photoSrc = $("#liveFeed");
+
+  const photoSrc = document.getElementById('liveFeed');
 
   console.log("take snap----");
   console.log(photoSrc);
