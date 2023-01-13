@@ -2,11 +2,13 @@ function delay(time) {
   return new Promise((resolve) => setTimeout(resolve, time));
 }
 
+let lastAlertStat = false;
+
 const play = () => {
   const audio = new Audio(
     "https://assets.mixkit.co/sfx/preview/mixkit-elevator-tone-2863.mp3"
   );
-  audio.muted = true; 
+  audio.muted = true;
   audio.play();
 };
 
@@ -36,8 +38,13 @@ const myPeriodicMethod = () => {
   $.ajax({
     url: "http://codepi.local:3000/api/true-or-false",
     success: (data) => {
-      if(data.value)
-        alertSound();
+      if (data.value) {
+        if (!lastAlertStat) {
+          lastAlertStat = true;
+          alertSound();
+        } else
+          lastAlertStat = false;
+      }
       console.log(data.value);
     },
     complete: () => {
