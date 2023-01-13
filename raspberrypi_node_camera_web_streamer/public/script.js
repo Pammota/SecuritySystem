@@ -7,7 +7,7 @@ let photoIndex = 0;
 
 const play = () => {
   const audio = new Audio(
-    "https://assets.mixkit.co/sfx/preview/mixkit-elevator-tone-2863.mp3"
+    "./alarm.mp3"
   );
   // audio.muted = true;
   audio.play();
