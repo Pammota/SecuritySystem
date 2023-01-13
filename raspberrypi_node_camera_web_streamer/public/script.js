@@ -73,22 +73,26 @@ myPeriodicMethod();
 const takeSnap = () => {
   // const photoSrc = $("#liveFeed");
 
-  const photoSrc = document.getElementById('liveFeed');
+  const photoSrc = document.getElementById("liveFeed");
 
   console.log("take snap----");
-  console.log(photoSrc);
-  console.log(photoSrc.src);
+  console.log("tag",photoSrc);
+  console.log("src",photoSrc.src);
 
   fetch(photoSrc.src)
-    .then((res) => {console.log(res, res.blob()) ; return res.blob()})
+    .then((res) => {
+      console.log("res, res.blob",res, res.blob());
+      return res.blob();
+    })
     .then((blob) => {
+      console.log("blob 2", blob);
       const file = new File([blob], `${photoIndex}-img.png`, blob);
-      console.log(file);
+      console.log("file",file);
       localStorage.setItem(`img-${photoIndex}`, file);
     });
 
   const recentUrl = localStorage.getItem(`img-${photoIndex}`);
-  console.log(recentUrl);
+  console.log("recent url", recentUrl);
 
   $("#imglist").prepend(`<img src="${recentUrl}" />`);
 
